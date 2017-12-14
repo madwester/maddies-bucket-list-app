@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/compontents/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="css/custom.css">
+        <title>Bucket list</title>
+    </head>
+    <body>
+        <header>
+            <div class="head">
+                <h2>Maddies Bucket List</h2>
+            </div>
+            </header>
+            <div>
+
+  <!-- NAV TABS -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation left" class="active"><a href="#not-completed" aria-controls="not-completed" role="tab" data-toggle="tab">Not yet completed</a></li>
+    <li role="presentation right"><a href="#completed" aria-controls="completed" role="tab" data-toggle="tab">Completed</a></li>
+    
+  </ul>
+
+  <!-- TAB PANES -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="not-completed">
+        <main><form id="form-input">
+          <input type="text" name="add-input" id="add-input" placeholder="+ Add Activity ">
+        </form>
+        <ul id="activity-list"></ul>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="completed">
+        <ul id="completed-activity-list"></ul>
+    </div>
+</div>
+</main>
+        <script src="/compontents/jquery/dist/jquery.min.js"></script>
+        <script src="/compontents/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+    
+    <!-- TEMPLATE NOT COMPLETED ACTIVITY -->
+    <template id="not-completed-template">
+        <li data-id="" data-name="" data-status="">
+            <div class="activity-item">
+            <p class="activity-title">Placeholder</p>
+            <div class="icons">
+                <button type="button" class="edit-btn" id="btn-edit" data-function="edit"></button>
+                <button class="btn-done" data-function="done"></button>
+                <button class="btn-delete" data-function="delete"></button>
+            </div>
+            </div>
+        </li>
+    </template>
+    
+    <!-- TEMPLATE COMPLETED ACTIVITY -->
+    <template id="completed-template">
+        <li data-id="" data-name="" data-status="">
+            <div class="activity-item">
+                <p class="activity-title">Placeholder</p>
+                <div class="icons">
+                    <button class="btn-done" data-function="done"></button>
+                    <button class="btn-delete" data-function="delete"></button>
+                    <button class="edit-btn btn-edit" data-function="edit"></button>
+                </div>
+            </div>
+        </li>
+    </template>
+    
+    <!-- MODAL -->
+    <div id="popup" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Placeholder title</h4>
+      </div>
+      <div class="modal-body">
+          <form id="form-input-activity">
+              <input type="date" name="date" class="add-date" placeholder="Add your date..">
+              <textarea rows="7" class="add-description" name="name-description" form="form-input-activity" placeholder="Add your description here.."></textarea>
+        </form>
+      </div>
+      <div class="modal-footer">
+              <button type="button" class="btn btn-danger btn-delete2" data-dismiss="modal">Delete activity</button>
+              <button type="button" class="btn btn-save" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.MODAL -->
+</html>
+

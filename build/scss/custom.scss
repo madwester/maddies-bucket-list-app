@@ -1,0 +1,229 @@
+// Color Variables
+$primary-color: #81c784;
+$primary-color-light: #b2fab4;
+$primary-color-dark: #519657;
+$secondary-color: #e6ee9c;
+$secondary-color-light: #ffffce;
+$secondary-color-dark: #b3bc6d;
+$default-light-gray: #e0e0e0;
+$default-dark-gray: #595959;
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush|Covered+By+Your+Grace|Lato|Reenie+Beanie');
+
+
+// Font Variables
+$lato: 'Lato', sans-serif;
+$caveat: 'Caveat Brush', cursive;
+$rennie: 'Reenie Beanie', cursive; 
+$grace: 'Covered By Your Grace', cursive; 
+
+
+@mixin reset(){
+    margin: 0;
+    padding: 0;
+}
+ 
+body {
+    color: black;
+    @include reset();
+} 
+
+a {
+    text-decoration: none;
+    color: black;
+    &:hover,
+    &:focus,
+    &:active
+    {
+        text-decoration: none;
+    }
+}
+ul {
+    list-style: none;
+}
+
+.container-fluid{
+    @include reset();
+    display: flex;
+    flex-direction: column;
+}
+
+.head {
+    text-align: center;
+    border-top: 15px solid $primary-color-dark;
+    background-color: $primary-color;
+    margin: 0 0 10px 0;
+    h2 {
+        color: black;
+        font-family: $grace;
+        text-align: center; 
+        padding: 10px;
+        margin: 0;
+    }
+}
+
+.nav-tabs>li {
+    width: 50%;
+    text-align: center;
+}
+
+/*----------------------------------
+
+ADD ACTIVITY INPUT 
+
+----------------------------------*/
+
+#form-input {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    @include reset();
+}
+#add-input {
+    margin: 10px auto;
+    padding: 8px 12px;
+    width: 80%;
+    border-radius: 5px;
+    border: 0;
+    background-color: $default-light-gray;
+    color: black;
+}
+#add-input::placeholder {
+    color: black;
+}
+
+/*----------------------------------
+
+ACTIVITY LIST
+
+----------------------------------*/
+
+#activity-list {
+    @include reset();
+}
+#completed-activity-list {
+    padding: 0;
+    margin: 10px 0;
+}
+.activity-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: lighten($primary-color, 20%);
+    margin: 3px 0;
+    &:hover,
+    &:focus,
+    &:active
+    {
+        cursor: pointer;
+        opacity: 0.4;
+        color: black;
+    }
+    p{
+        font-size: 16px;
+        width: 70%;
+        //font-family: $lato;
+        margin: 0;
+        padding: 10px;
+    }
+}
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 5px 5px;
+    width: 30%;
+    button {
+        border: 0;
+        padding: 10px;
+        margin: 0 10px;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .btn-delete {
+        background-image: url("../images/icon-delete.png");
+        background-size: 70%;
+    }
+    .btn-done {
+        background-image: url("../images/icon-done.png");
+        background-size: 90%;
+    }
+    .btn-edit {
+        background-image: url("../images/icon-edit.png");
+        background-size: 90%;
+    }
+    
+}
+li[data-status="0"]{
+    .btn-edit {
+        display: none;
+    }
+}
+li[data-status="1"]{
+    .btn-delete {
+        display: none;
+    }
+    .btn-done {
+        display: none;
+    }
+}
+
+/*----------------------------------
+
+MODAL
+
+----------------------------------*/
+
+.modal-dialog {
+    margin: 40px 20px;
+}
+.modal-content{
+    //background-color: $primary-color-dark;
+}
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#form-input-activity {
+    width: 100%;
+}
+.add-date {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    background-color: $default-light-gray;
+}
+.add-date::placeholder {
+    color: black;
+}
+textarea {
+    width: 100%;
+    resize: none;
+    margin: 8px 0;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    background-color: $default-light-gray;
+}
+textarea::placeholder {
+    color: black;
+}
+.btn-save {
+    background-color: lighten($primary-color-dark, 20%);
+    color: black;
+    border: 0;
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $primary-color-dark;
+        border: 0;
+    }
+}
+
+
+
