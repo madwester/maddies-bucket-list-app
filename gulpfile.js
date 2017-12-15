@@ -28,7 +28,8 @@ gulp.task('js', function(){
   'js/template.js',
   'js/ui.js',
   'js/main-module.js',
-  'js/modal.js'])
+  'js/modal.js',
+  'js/my-cordova.js'])
   .pipe(concat('main.js'))
   .pipe(browserSync.reload({stream:true}))
   .pipe(gulp.dest(buildpath+'/js'));

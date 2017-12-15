@@ -1,4 +1,4 @@
-// CLASSES
+//CLASSES
 
 class Activity {
     constructor(activity){

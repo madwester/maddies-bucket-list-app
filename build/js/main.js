@@ -1,4 +1,4 @@
-// CLASSES
+//CLASSES
 
 class Activity {
     constructor(activity){
@@ -55,7 +55,6 @@ var activity = ( function(){
             if(item.id == id){
                 object.activityarray.splice(i,1);
                 uimodule.render();
-                console.log("got called!");
                 //break;
                 return true;
             }
@@ -93,11 +92,14 @@ var storage = ( function(){
     return storageobject;
 }());
 
+
+
 //TEMPLATE
 
 var template = ( function(){
     var templateobject = {};
     window.addEventListener('load', () => {
+        addCordovaEvents();
             const template1 = document.querySelector("#not-completed-template");
             const template2 = document.querySelector("#completed-template");
             templateobject.template = template1; 
@@ -176,7 +178,6 @@ var uimodule = ( function(){
         return module;
     }() );
 
-
 // MAIN MODULE
 
 var app = ( function (){
@@ -198,8 +199,11 @@ var app = ( function (){
             activity.activityarray = storage.read();
         }
         uimodule.render();
+        addCordovaEvents();
     });
 }());
+
+// MODAL.JS
 
 //setting the values
 $(document).ready(function(){
@@ -254,3 +258,24 @@ $(document).ready(function(){
         }
     });
 });
+//MY CORDOVA
+
+function addCordovaEvents(){
+  document.addEventListener("deviceready",onDeviceReady,false);
+}
+//save list
+function onDeviceReady(){
+  document.addEventListener("pause",function(){
+    //when app is paused (eg home button pressed) save list
+    storage.store(activity.activityarray);
+  },false);
+  
+  
+//pause list
+document.addEventListener("resume",function(){
+    //when app is resumed (brought back from sleep) load list
+    storage.read(activity.activityarray);
+  },false);
+}  
+ 
+ 
